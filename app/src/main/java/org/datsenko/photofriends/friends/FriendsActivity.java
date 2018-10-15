@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
@@ -48,10 +47,6 @@ public class FriendsActivity extends AppCompatActivity implements IFriendsListen
 
         presenter.init(this);
 
-        if (App.accessToken == ""){
-            VKSdk.login(this, "friends, photos");
-        }
-
         adapter = new FriendsListAdapter(new ArrayList<>(), FriendsActivity.this);
         rvFriends.setAdapter(adapter);
         rvFriends.setLayoutManager(new LinearLayoutManager(this));
@@ -61,7 +56,11 @@ public class FriendsActivity extends AppCompatActivity implements IFriendsListen
             startActivity(intent);
         }));
 
-        fetchFriends();
+        if (App.accessToken == ""){
+            VKSdk.login(this, "friends, photos");
+        }
+        else
+            fetchFriends();
     }
 
     @Override
