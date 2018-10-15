@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PhotoFriends</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="e_mail_phone">E-Mail/Phone</string>
+    <integer name="com_vk_sdk_AppId">6720090</integer>
+</resources>
